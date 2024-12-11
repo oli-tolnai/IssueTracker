@@ -1,4 +1,7 @@
 
+using IssueTracker.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace IssueTracker
 {
     public class Program
@@ -8,6 +11,11 @@ namespace IssueTracker
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddDbContext<IssueTrackerContext>(options =>
+            {
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IssueTrackerDb;Trusted_Connection=True;TrustServerCertificate=True");
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
