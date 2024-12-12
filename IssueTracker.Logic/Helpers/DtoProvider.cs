@@ -23,6 +23,7 @@ namespace IssueTracker.Logic.Helpers
                 cfg.CreateMap<ProjectCreateUpdateDto, Project>();
                 cfg.CreateMap<IssueCreateDto, Issue>();
                 cfg.CreateMap<Issue, IssueViewDto>();
+                cfg.CreateMap<IssueStatusUpdateDto, Issue>();
             });
 
             Mapper = new Mapper(config);

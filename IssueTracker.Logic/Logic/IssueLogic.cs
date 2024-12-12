@@ -26,5 +26,12 @@ namespace IssueTracker.Logic.Logic
             var iModel = dtoProvider.Mapper.Map<Issue>(dto);
             repo.Create(iModel);
         }
+
+        public void UpdateIssueStatus(string id, IssueStatusUpdateDto dto)
+        {
+            var iModel = repo.FindById(id);
+            dtoProvider.Mapper.Map(dto, iModel);
+            repo.Update(iModel);
+        }
     }
 }
