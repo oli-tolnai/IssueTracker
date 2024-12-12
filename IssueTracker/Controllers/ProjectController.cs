@@ -18,7 +18,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpPost]
-        public void AddProject(ProjectCreateDto dto)
+        public void AddProject(ProjectCreateUpdateDto dto)
         {
             logic.AddProject(dto);
         }
@@ -33,6 +33,12 @@ namespace IssueTracker.Endpoint.Controllers
         public void DeleteProject(string id)
         {
             logic.DeleteProject(id);
+        }
+
+        [HttpPut("{id}")]
+        public void UpdateProject(string id, [FromBody] ProjectCreateUpdateDto dto)
+        {
+            logic.UpdateProject(id, dto);
         }
     }
 }

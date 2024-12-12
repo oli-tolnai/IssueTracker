@@ -13,7 +13,7 @@ namespace IssueTracker.Logic
             this.repo = repo;
         }
 
-        public void AddProject(ProjectCreateDto dto)
+        public void AddProject(ProjectCreateUpdateDto dto)
         {
             Project p = new Project(dto.Name, dto.Description);
             if (repo.GetAll().FirstOrDefault(p => p.Name == dto.Name) == null)
@@ -42,5 +42,12 @@ namespace IssueTracker.Logic
             repo.DeleteById(id);
         }
 
+        public void UpdateProject(string id, ProjectCreateUpdateDto dto)
+        {
+            Project oldp = repo.FindById(id);
+            oldp.Name = dto.Name;
+            oldp.Description = dto.Description;
+            repo.Update(oldp);
+        }
     }
 }

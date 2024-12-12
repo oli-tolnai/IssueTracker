@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Entities.Dtos.Project
 {
-    public class ProjectCreateDto
+    public class ProjectCreateUpdateDto
     {
         public string Name { get; set; } = "";
 
