@@ -40,5 +40,11 @@ namespace IssueTracker.Endpoint.Controllers
         {
             logic.UpdateProject(id, dto);
         }
+
+        [HttpGet("{id}")]
+        public ProjectViewDto GetProject(string id)
+        {
+            return logic.GetProject(id);
+        }
     }
 }

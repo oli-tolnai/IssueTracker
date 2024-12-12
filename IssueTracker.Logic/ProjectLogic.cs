@@ -49,5 +49,18 @@ namespace IssueTracker.Logic
             oldp.Description = dto.Description;
             repo.Update(oldp);
         }
+
+        public ProjectViewDto GetProject(string id)
+        {
+            Project pModel = repo.FindById(id);
+            return new ProjectViewDto
+            {
+                Id = pModel.Id,
+                Name = pModel.Name,
+                Description = pModel.Description,
+                Issues = pModel.Issues
+            };
+        }
+
     }
 }
