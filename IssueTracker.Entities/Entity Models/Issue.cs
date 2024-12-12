@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using IssueTracker.Entities.Helpers;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

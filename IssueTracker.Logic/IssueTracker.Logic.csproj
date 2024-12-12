@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IssueTracker.Data\IssueTracker.Data.csproj" />
+    <ProjectReference Include="..\IssueTracker.Entities\IssueTracker.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
