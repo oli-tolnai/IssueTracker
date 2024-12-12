@@ -1,5 +1,6 @@
 ﻿using IssueTracker.Data;
 using IssueTracker.Entities;
+using IssueTracker.Entities.Dtos.Project;
 
 namespace IssueTracker.Logic
 {
@@ -12,9 +13,10 @@ namespace IssueTracker.Logic
             this.repo = repo;
         }
 
-        public void AddProject()
+        public void AddProject(ProjectCreateDto dto)
         {
-
+            Project p = new Project(dto.Name, dto.Description);
+            repo.Create(p);
         }
 
     }
