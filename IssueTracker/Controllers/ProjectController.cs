@@ -22,5 +22,11 @@ namespace IssueTracker.Endpoint.Controllers
         {
             logic.AddProject(dto);
         }
+
+        [HttpGet]
+        public IEnumerable<Project> GetAllProjects()
+        {
+            return logic.GetAllProjects();
+        }
     }
 }

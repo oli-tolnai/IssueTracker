@@ -26,5 +26,10 @@ namespace IssueTracker.Logic
             }
         }
 
+        public IEnumerable<Project> GetAllProjects()
+        {
+            return repo.GetAll();
+        }
+
     }
 }
