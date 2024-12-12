@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ namespace IssueTracker.Entities.Dtos.Issue
         [MaxLength(50)]
         public required string Type { get; set; } = "";
 
-        [MinLength(10)]
+        //[MinLength(10)]
         [MaxLength(100)]
         public required string Title { get; set; } = "";
 
-        [MinLength(20)]
+        //[MinLength(20)]
         [MaxLength(500)]
         public required string Description { get; set; } = "";
 
@@ -28,12 +29,12 @@ namespace IssueTracker.Entities.Dtos.Issue
         public required int Priority { get; set; }
 
         [MaxLength(30)]
-        public string Status { get; set; }
+        public string Status { get; } = "Open";
 
-        public IssueCreateDto()
-        {
-            Status = "Open";
-        }
+        //public IssueCreateDto()
+        //{
+        //    Status = "Open";
+        //}
 
 
         /*
