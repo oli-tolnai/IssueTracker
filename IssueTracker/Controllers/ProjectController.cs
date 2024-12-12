@@ -8,6 +8,17 @@ namespace IssueTracker.Endpoint.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
+        Repository<Project> repo;
 
+        public ProjectController(Repository<Project> repo)
+        {
+            this.repo = repo;
+        }
+
+        [HttpPost]
+        public void AddProject(Project project)
+        {
+            repo.Create(project);
+        }
     }
 }

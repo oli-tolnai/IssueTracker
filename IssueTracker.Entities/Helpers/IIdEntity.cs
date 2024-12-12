@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IssueTracker.Data
+namespace IssueTracker.Entities
 {
     public interface IIdEntity
     {

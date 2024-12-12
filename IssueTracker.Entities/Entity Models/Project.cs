@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IssueTracker.Entities
 {
-    public class Project
+    public class Project : IIdEntity
     {
         public Project(string name, string description)
         {

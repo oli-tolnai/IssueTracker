@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IssueTracker.Entities
 {
-    public class Issue
+    public class Issue : IIdEntity
     {
         public Issue(string projectId, string title, string description, string status, int priority, string type)
         {
