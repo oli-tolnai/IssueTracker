@@ -7,15 +7,18 @@ namespace IssueTracker.Logic
     public class ProjectLogic
     {
         Repository<Project> repo;
+        DtoProvider dtoProvider;
 
-        public ProjectLogic(Repository<Project> repo)
+        public ProjectLogic(Repository<Project> repo, DtoProvider dtoProvider)
         {
             this.repo = repo;
+            this.dtoProvider = dtoProvider;
         }
 
         public void AddProject(ProjectCreateUpdateDto dto)
         {
-            Project p = new Project(dto.Name, dto.Description);
+            Project p = dtoProvider.Mapper.Map<Project>(dto);
+
             if (repo.GetAll().FirstOrDefault(p => p.Name == dto.Name) == null)
             {
                 repo.Create(p);
@@ -29,12 +32,8 @@ namespace IssueTracker.Logic
         public IEnumerable<ProjectShortViewDto> GetAllProjects()
         {
             return repo.GetAll().Select(x =>
-                new ProjectShortViewDto
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
-                });
+                    dtoProvider.Mapper.Map<ProjectShortViewDto>(x)
+                );
         }
 
         public void DeleteProject(string id)
@@ -45,21 +44,14 @@ namespace IssueTracker.Logic
         public void UpdateProject(string id, ProjectCreateUpdateDto dto)
         {
             Project oldp = repo.FindById(id);
-            oldp.Name = dto.Name;
-            oldp.Description = dto.Description;
+            dtoProvider.Mapper.Map(dto, oldp);
             repo.Update(oldp);
         }
 
         public ProjectViewDto GetProject(string id)
         {
             Project pModel = repo.FindById(id);
-            return new ProjectViewDto
-            {
-                Id = pModel.Id,
-                Name = pModel.Name,
-                Description = pModel.Description,
-                Issues = pModel.Issues
-            };
+            return dtoProvider.Mapper.Map<ProjectViewDto>(pModel);
         }
 
     }

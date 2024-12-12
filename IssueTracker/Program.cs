@@ -14,6 +14,7 @@ namespace IssueTracker
             // Add services to the container.
 
             builder.Services.AddTransient(typeof(Repository<>));
+            builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<ProjectLogic>();
 
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
