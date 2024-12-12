@@ -4,6 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IssueTracker.Endpoint.Controllers
 {
+    public class ProjectCreateDto
+    {
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+    }
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectController : ControllerBase
@@ -16,9 +24,10 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpPost]
-        public void AddProject(Project project)
+        public void AddProject(ProjectCreateDto dto)
         {
-            repo.Create(project);
+            var m = new Project(dto.Name, dto.Description);
+            repo.Create(m);
         }
     }
 }

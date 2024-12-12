@@ -12,6 +12,8 @@ namespace IssueTracker
 
             // Add services to the container.
 
+            builder.Services.AddTransient(typeof(Repository<>));
+
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IssueTrackerDb;Trusted_Connection=True;TrustServerCertificate=True");
