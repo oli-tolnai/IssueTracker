@@ -24,7 +24,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Project> GetAllProjects()
+        public IEnumerable<ProjectShortViewDto> GetAllProjects()
         {
             return logic.GetAllProjects();
         }

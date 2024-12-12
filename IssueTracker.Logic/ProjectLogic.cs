@@ -26,9 +26,15 @@ namespace IssueTracker.Logic
             }
         }
 
-        public IEnumerable<Project> GetAllProjects()
+        public IEnumerable<ProjectShortViewDto> GetAllProjects()
         {
-            return repo.GetAll();
+            return repo.GetAll().Select(x =>
+                new ProjectShortViewDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description
+                });
         }
 
     }
