@@ -17,10 +17,12 @@ namespace IssueTracker
             builder.Services.AddTransient(typeof(Repository<>));
             builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<ProjectLogic>();
+            builder.Services.AddTransient<IssueLogic>();
 
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IssueTrackerDb;Trusted_Connection=True;TrustServerCertificate=True");
+                options.UseLazyLoadingProxies();
             });
 
             builder.Services.AddControllers();

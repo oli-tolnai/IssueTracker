@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IssueTracker.Entities.Dtos.Issue;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace IssueTracker.Entities.Dtos.Project
         public string Id { get; set; } = "";
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
-        public IEnumerable<Issue> Issues { get; set; }
+        public IEnumerable<IssueViewDto> Issues { get; set; }
 
         public int IssueCount => Issues?.Count() ?? 0;
     }

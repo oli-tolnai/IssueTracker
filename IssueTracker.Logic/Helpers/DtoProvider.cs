@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using IssueTracker.Entities;
+using IssueTracker.Entities.Dtos.Issue;
 using IssueTracker.Entities.Dtos.Project;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace IssueTracker.Logic.Helpers
                 cfg.CreateMap<Project, ProjectShortViewDto>();
                 cfg.CreateMap<Project, ProjectViewDto>();
                 cfg.CreateMap<ProjectCreateUpdateDto, Project>();
+                cfg.CreateMap<IssueCreateDto, Issue>();
+                cfg.CreateMap<Issue, IssueViewDto>();
             });
 
             Mapper = new Mapper(config);
