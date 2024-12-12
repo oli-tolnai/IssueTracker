@@ -1,6 +1,7 @@
 
 using IssueTracker.Data;
-using IssueTracker.Logic;
+using IssueTracker.Logic.Helpers;
+using IssueTracker.Logic.Logic;
 using Microsoft.EntityFrameworkCore;
 
 namespace IssueTracker

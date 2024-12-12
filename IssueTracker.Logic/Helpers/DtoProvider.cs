@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IssueTracker.Logic
+namespace IssueTracker.Logic.Helpers
 {
     public class DtoProvider
     {

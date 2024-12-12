@@ -1,7 +1,7 @@
 ﻿using IssueTracker.Data;
 using IssueTracker.Entities;
 using IssueTracker.Entities.Dtos.Project;
-using IssueTracker.Logic;
+using IssueTracker.Logic.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IssueTracker.Endpoint.Controllers

@@ -1,8 +1,9 @@
 ﻿using IssueTracker.Data;
 using IssueTracker.Entities;
 using IssueTracker.Entities.Dtos.Project;
+using IssueTracker.Logic.Helpers;
 
-namespace IssueTracker.Logic
+namespace IssueTracker.Logic.Logic
 {
     public class ProjectLogic
     {
@@ -25,7 +26,7 @@ namespace IssueTracker.Logic
             }
             else
             {
-                throw new System.Exception("Project with this name already exists");
+                throw new Exception("Project with this name already exists");
             }
         }
 
