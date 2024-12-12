@@ -37,5 +37,10 @@ namespace IssueTracker.Logic
                 });
         }
 
+        public void DeleteProject(string id)
+        {
+            repo.DeleteById(id);
+        }
+
     }
 }

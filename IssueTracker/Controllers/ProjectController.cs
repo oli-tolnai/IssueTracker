@@ -28,5 +28,11 @@ namespace IssueTracker.Endpoint.Controllers
         {
             return logic.GetAllProjects();
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteProject(string id)
+        {
+            logic.DeleteProject(id);
+        }
     }
 }
