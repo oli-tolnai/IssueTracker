@@ -1,5 +1,6 @@
 
 using IssueTracker.Data;
+using IssueTracker.Logic;
 using Microsoft.EntityFrameworkCore;
 
 namespace IssueTracker
@@ -13,6 +14,7 @@ namespace IssueTracker
             // Add services to the container.
 
             builder.Services.AddTransient(typeof(Repository<>));
+            builder.Services.AddTransient<ProjectLogic>();
 
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
             {

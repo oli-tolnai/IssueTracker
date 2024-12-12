@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IssueTracker.Data\IssueTracker.Data.csproj" />
     <ProjectReference Include="..\IssueTracker.Entities\IssueTracker.Entities.csproj" />
+    <ProjectReference Include="..\IssueTracker.Logic\IssueTracker.Logic.csproj" />
   </ItemGroup>
 
 </Project>

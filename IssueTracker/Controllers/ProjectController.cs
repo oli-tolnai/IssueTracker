@@ -1,33 +1,26 @@
 ﻿using IssueTracker.Data;
 using IssueTracker.Entities;
+using IssueTracker.Entities.Dtos.Project;
+using IssueTracker.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IssueTracker.Endpoint.Controllers
 {
-    public class ProjectCreateDto
-    {
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-    }
-
-
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        Repository<Project> repo;
+        ProjectLogic logic;
 
-        public ProjectController(Repository<Project> repo)
+        public ProjectController(ProjectLogic logic)
         {
-            this.repo = repo;
+            this.logic = logic;
         }
 
         [HttpPost]
         public void AddProject(ProjectCreateDto dto)
         {
-            var m = new Project(dto.Name, dto.Description);
-            repo.Create(m);
+            logic.AddProject(dto);
         }
     }
 }

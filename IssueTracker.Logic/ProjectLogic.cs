@@ -16,7 +16,14 @@ namespace IssueTracker.Logic
         public void AddProject(ProjectCreateDto dto)
         {
             Project p = new Project(dto.Name, dto.Description);
-            repo.Create(p);
+            if (repo.GetAll().FirstOrDefault(p => p.Name == dto.Name) == null)
+            {
+                repo.Create(p);
+            }
+            else
+            {
+                throw new System.Exception("Project with this name already exists");
+            }
         }
 
     }
