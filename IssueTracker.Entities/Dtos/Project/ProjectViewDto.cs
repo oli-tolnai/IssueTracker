@@ -15,5 +15,7 @@ namespace IssueTracker.Entities.Dtos.Project
         public IEnumerable<IssueViewDto> Issues { get; set; }
 
         public int IssueCount => Issues?.Count() ?? 0;
+
+        public int NumberOfNewIssues => Issues?.Count(i => i.Status == "New") ?? 0;
     }
 }

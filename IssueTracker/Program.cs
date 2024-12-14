@@ -21,7 +21,7 @@ namespace IssueTracker
 
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
             {
-                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IssueTrackerDb;Trusted_Connection=True;TrustServerCertificate=True");
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IssueTrackerDb;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True");
                 options.UseLazyLoadingProxies();
             });
 

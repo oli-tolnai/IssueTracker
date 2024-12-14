@@ -29,12 +29,7 @@ namespace IssueTracker.Entities.Dtos.Issue
         public required int Priority { get; set; }
 
         [MaxLength(30)]
-        public string Status { get; } = "Open";
-
-        //public IssueCreateDto()
-        //{
-        //    Status = "Open";
-        //}
+        public string Status { get; } = "New";
 
 
         /*

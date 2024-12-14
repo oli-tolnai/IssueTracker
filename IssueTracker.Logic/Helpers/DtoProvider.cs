@@ -18,7 +18,11 @@ namespace IssueTracker.Logic.Helpers
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Project, ProjectShortViewDto>();
+                cfg.CreateMap<Project, ProjectShortViewDto>()
+                .AfterMap((src, dest)=>
+                {
+                    dest.NumberOfNewIssues = src.Issues.Count(i => i.Status == "New");
+                });
                 cfg.CreateMap<Project, ProjectViewDto>();
                 cfg.CreateMap<ProjectCreateUpdateDto, Project>();
                 cfg.CreateMap<IssueCreateDto, Issue>();
