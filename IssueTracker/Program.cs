@@ -1,7 +1,9 @@
 
 using IssueTracker.Data;
+using IssueTracker.Endpoint.Helpers;
 using IssueTracker.Logic.Helpers;
 using IssueTracker.Logic.Logic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace IssueTracker
@@ -25,7 +27,16 @@ namespace IssueTracker
                 options.UseLazyLoadingProxies();
             });
 
-            builder.Services.AddControllers();
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            builder.Services.AddControllers(opt =>
+            {
+                opt.Filters.Add<ExceptionFilter>();
+                opt.Filters.Add<ValidationFilterAttribute>();
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

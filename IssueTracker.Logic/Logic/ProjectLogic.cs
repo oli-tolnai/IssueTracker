@@ -26,7 +26,7 @@ namespace IssueTracker.Logic.Logic
             }
             else
             {
-                throw new Exception("Project with this name already exists");
+                throw new ArgumentException("Project with this name already exists");
             }
         }
 
