@@ -3,6 +3,7 @@ using IssueTracker.Data;
 using IssueTracker.Endpoint.Helpers;
 using IssueTracker.Logic.Helpers;
 using IssueTracker.Logic.Logic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,20 @@ namespace IssueTracker
             builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<ProjectLogic>();
             builder.Services.AddTransient<IssueLogic>();
+            //builder.Services.AddTransient<UserManager<IdentityUser>>();
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+                    option =>
+                    {
+                        option.Password.RequireDigit = false;
+                        option.Password.RequiredLength = 6;
+                        option.Password.RequireNonAlphanumeric = false;
+                        option.Password.RequireUppercase = false;
+                        option.Password.RequireLowercase = false;
+                    }
+)
+                .AddEntityFrameworkStores<IssueTrackerContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.AddDbContext<IssueTrackerContext>(options =>
             {
