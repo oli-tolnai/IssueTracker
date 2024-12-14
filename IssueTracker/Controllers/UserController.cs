@@ -71,8 +71,8 @@ namespace IssueTracker.Endpoint.Controllers
 
 
             return new JwtSecurityToken(
-                  issuer: "movieclub.com",
-                  audience: "movieclub.com",
+                  issuer: "issuetracker.com",
+                  audience: "issuetracker.com",
                   claims: claims?.ToArray(),
                   expires: DateTime.Now.AddMinutes(expiryInMinutes),
                   signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
