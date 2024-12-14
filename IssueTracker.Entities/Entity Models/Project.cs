@@ -23,9 +23,11 @@ namespace IssueTracker.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
+        [MinLength(6)]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [MinLength(10)]
         [StringLength(200)]
         public string Description { get; set; }
 
