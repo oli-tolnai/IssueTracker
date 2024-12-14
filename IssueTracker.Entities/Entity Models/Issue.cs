@@ -46,9 +46,8 @@ namespace IssueTracker.Entities
         [StringLength(20)]
         public string Type { get; set; } // e.g. "Bug", "Feature", "Improvement", "Task"
 
-        //public DateTime CreatedDate { get; set; }
-
-        //public DateTime ResolvedDate { get; set; }
+        [StringLength(50)]
+        public string UserId { get; set; }
 
         [NotMapped]
         public virtual Project? Project { get; set; }

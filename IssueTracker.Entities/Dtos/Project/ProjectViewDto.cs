@@ -16,6 +16,6 @@ namespace IssueTracker.Entities.Dtos.Project
 
         public int IssueCount => Issues?.Count() ?? 0;
 
-        public int NumberOfNewIssues => Issues?.Count(i => i.Status == "New") ?? 0;
+        public int NumberOfNewIssues => Issues?.Count(i => i.Status == "New") ?? 0; //TODO: ki kell találni jobban
     }
 }

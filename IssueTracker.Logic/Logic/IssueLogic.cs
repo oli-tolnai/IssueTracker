@@ -21,9 +21,10 @@ namespace IssueTracker.Logic.Logic
             this.dtoProvider = dtoProvider;
         }
 
-        public void AddIssue(IssueCreateDto dto)
+        public void AddIssue(IssueCreateDto dto, string userId)
         {
             var iModel = dtoProvider.Mapper.Map<Issue>(dto);
+            iModel.UserId = userId;
             repo.Create(iModel);
         }
 

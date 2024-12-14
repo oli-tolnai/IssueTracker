@@ -47,7 +47,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize] //TODO: kell ez ide?
+        [Authorize] //TODO: kell ez ide? plusz ki kell találni jobban
         public ProjectViewDto GetProject(string id)
         {
             return logic.GetProject(id);
