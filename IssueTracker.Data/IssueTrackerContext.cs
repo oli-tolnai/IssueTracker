@@ -1,10 +1,11 @@
 ﻿using IssueTracker.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace IssueTracker.Data
 {
-    public class IssueTrackerContext : DbContext
+    public class IssueTrackerContext : IdentityDbContext
     {
         public DbSet<Project> Projects { get; set; }
 
