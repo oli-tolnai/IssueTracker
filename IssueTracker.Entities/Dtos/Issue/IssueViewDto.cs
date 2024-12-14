@@ -14,5 +14,7 @@ namespace IssueTracker.Entities.Dtos.Issue
         public string Description { get; set; } = "";
         public int Priority { get; set; }
         public string Status { get; set; } = "";
+
+        public string UserFullName { get; set; } = "";
     }
 }
