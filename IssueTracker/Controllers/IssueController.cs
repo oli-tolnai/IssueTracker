@@ -31,7 +31,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void UpdateIssueStatus(string id, [FromBody] IssueStatusUpdateDto dto)
         {
             logic.UpdateIssueStatus(id, dto);

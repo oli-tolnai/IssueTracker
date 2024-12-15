@@ -20,7 +20,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void AddProject(ProjectCreateUpdateDto dto)
         {
             logic.AddProject(dto);
@@ -33,14 +33,14 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void DeleteProject(string id)
         {
             logic.DeleteProject(id);
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void UpdateProject(string id, [FromBody] ProjectCreateUpdateDto dto)
         {
             logic.UpdateProject(id, dto);

@@ -13,10 +13,12 @@ namespace IssueTracker.Endpoint.Controllers
     public class UserController : ControllerBase
     {
         UserManager<IdentityUser> userManager;
+        RoleManager<IdentityRole> roleManager;
 
-        public UserController(UserManager<IdentityUser> userManager)
+        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
 
@@ -25,6 +27,12 @@ namespace IssueTracker.Endpoint.Controllers
         {
             var user = new IdentityUser(dto.UserName);
             await userManager.CreateAsync(user, dto.Password);
+            if (userManager.Users.Count() == 1)
+            {
+                //adminná előléptetés
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
         }
 
 
