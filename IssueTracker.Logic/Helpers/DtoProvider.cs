@@ -38,11 +38,24 @@ namespace IssueTracker.Logic.Helpers
                 cfg.CreateMap<Project, ProjectViewDto>();
                 cfg.CreateMap<ProjectCreateUpdateDto, Project>();
                 cfg.CreateMap<IssueCreateDto, Issue>();
+                cfg.CreateMap<Issue, IssueViewDto>();
+                //.AfterMap((src, dest) =>
+                //{
+                //    var user = userManager.Users.First(u => u.Id == src.UserId);
+                //    dest.UserFullName = user.LastName! + " " + user.FirstName;
+                //});
                 cfg.CreateMap<Issue, IssueViewDto>()
                 .AfterMap((src, dest) =>
                 {
-                    var user = userManager.Users.First(u => u.Id == src.UserId);
-                    dest.UserFullName = user.LastName! + " " + user.FirstName;
+                    var user = userManager.Users.FirstOrDefault(u => u.Id == src.UserId);
+                    if (user != null)
+                    {
+                        dest.UserFullName = user.LastName + " " + user.FirstName;
+                    }
+                    else
+                    {
+                        dest.UserFullName = "Unknown User";
+                    }
                 });
                 cfg.CreateMap<IssueStatusUpdateDto, Issue>();
             });
