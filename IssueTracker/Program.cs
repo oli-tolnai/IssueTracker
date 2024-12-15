@@ -36,7 +36,8 @@ namespace IssueTracker
                         option.Password.RequireUppercase = false;
                         option.Password.RequireLowercase = false;
                     }
-)
+                )
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<IssueTrackerContext>()
                 .AddDefaultTokenProviders();
 

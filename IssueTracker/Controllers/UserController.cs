@@ -57,6 +57,11 @@ namespace IssueTracker.Endpoint.Controllers
                     claim.Add(new Claim(ClaimTypes.Name, user.UserName!));
                     claim.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
 
+                    foreach (var role in await userManager.GetRolesAsync(user))
+                    {
+                        claim.Add(new Claim(ClaimTypes.Role, role));
+                    }
+
                     int expiryInMinutes = 24 * 60;
                     var token = GenerateAccessToken(claim, expiryInMinutes);
 
