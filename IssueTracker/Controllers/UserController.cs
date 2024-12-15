@@ -56,7 +56,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpPost("register")]
-        public async Task Register(UserInputDto dto)
+        public async Task Register(UserRegisterDto dto)
         {
             var user = new AppUser(dto.UserName);
             user.FirstName = dto.FirstName;
@@ -72,7 +72,7 @@ namespace IssueTracker.Endpoint.Controllers
 
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserInputDto dto)
+        public async Task<IActionResult> Login(UserLoginDto dto)
         {
             var user = await userManager.FindByNameAsync(dto.UserName);
             if (user == null)
