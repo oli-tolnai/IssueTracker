@@ -1,4 +1,5 @@
-﻿using IssueTracker.Entities.Dtos.Issue;
+﻿using IssueTracker.Data;
+using IssueTracker.Entities.Dtos.Issue;
 using IssueTracker.Entities.Dtos.Project;
 using IssueTracker.Logic.Logic;
 using Microsoft.AspNetCore.Authorization;
@@ -13,9 +14,9 @@ namespace IssueTracker.Endpoint.Controllers
     {
         IssueLogic logic;
 
-        UserManager<IdentityUser> userManager;
+        UserManager<AppUser> userManager;
 
-        public IssueController(IssueLogic logic, UserManager<IdentityUser> userManager)
+        public IssueController(IssueLogic logic, UserManager<AppUser> userManager)
         {
             this.logic = logic;
             this.userManager = userManager;

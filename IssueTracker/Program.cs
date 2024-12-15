@@ -27,7 +27,7 @@ namespace IssueTracker
             builder.Services.AddTransient<IssueLogic>();
             //builder.Services.AddTransient<UserManager<IdentityUser>>();
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+            builder.Services.AddIdentity<AppUser, IdentityRole>(
                     option =>
                     {
                         option.Password.RequireDigit = false;

@@ -11,6 +11,8 @@ namespace IssueTracker.Data
 
         public DbSet<Issue> Issues { get; set; }
 
+        public DbSet<AppUser> AppUsers { get; set; }
+
         public IssueTrackerContext(DbContextOptions<IssueTrackerContext> ctx)
             :base(ctx)
         {

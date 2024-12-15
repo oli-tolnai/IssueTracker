@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IssueTracker.Data;
 using IssueTracker.Entities;
 using IssueTracker.Entities.Dtos.Issue;
 using IssueTracker.Entities.Dtos.Project;
@@ -14,11 +15,11 @@ namespace IssueTracker.Logic.Helpers
 {
     public class DtoProvider
     {
-        UserManager<IdentityUser> userManager;
+        UserManager<AppUser> userManager;
 
         public Mapper Mapper { get; }
 
-        public DtoProvider(UserManager<IdentityUser> userManager)
+        public DtoProvider(UserManager<AppUser> userManager)
         {
             this.userManager = userManager;
             var config = new MapperConfiguration(cfg =>
@@ -28,7 +29,7 @@ namespace IssueTracker.Logic.Helpers
                 {
                     dest.NumberOfNewIssues = src.Issues.Count(i => i.Status == "New");
                 });
-                cfg.CreateMap<IdentityUser, UserViewDto>()
+                cfg.CreateMap<AppUser, UserViewDto>()
                 .AfterMap((src, dest) =>
                 {
                     dest.IsAdmin = userManager.IsInRoleAsync(src, "Admin").Result;
@@ -40,7 +41,8 @@ namespace IssueTracker.Logic.Helpers
                 cfg.CreateMap<Issue, IssueViewDto>()
                 .AfterMap((src, dest) =>
                 {
-                    dest.UserFullName = userManager.Users.First(u => u.Id == src.UserId).UserName!;
+                    var user = userManager.Users.First(u => u.Id == src.UserId);
+                    dest.UserFullName = user.LastName! + " " + user.FirstName;
                 });
                 cfg.CreateMap<IssueStatusUpdateDto, Issue>();
             });
