@@ -14,8 +14,10 @@ namespace IssueTracker.Entities.Dtos.Project
         public string Description { get; set; } = "";
         public IEnumerable<IssueViewDto> Issues { get; set; }
 
-        public int IssueCount => Issues?.Count() ?? 0;
+        public int NumberOfIssues => Issues?.Count() ?? 0;
+        public int NewIssueCount => Issues?.Count(i => i.Status == "New") ?? 0;
+        public int InProgressIssueCount => Issues?.Count(i => i.Status != "New" && i.Status != "Closed") ?? 0; 
+        public int ClosedIssueCount => Issues?.Count(i => i.Status == "Closed") ?? 0;
 
-        public int NumberOfNewIssues => Issues?.Count(i => i.Status == "New") ?? 0; //TODO: ki kell találni jobban
     }
 }

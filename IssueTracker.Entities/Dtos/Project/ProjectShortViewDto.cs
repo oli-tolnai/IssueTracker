@@ -12,6 +12,7 @@ namespace IssueTracker.Entities.Dtos.Project
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
 
-        public int NumberOfNewIssues { get; set; } = 0;
+        //public int NumberOfNewIssues { get; set; } = 0;
+        public int ActiveIssues { get; set; } = 0;
     }
 }

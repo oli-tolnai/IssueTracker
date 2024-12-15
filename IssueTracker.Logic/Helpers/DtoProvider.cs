@@ -27,7 +27,7 @@ namespace IssueTracker.Logic.Helpers
                 cfg.CreateMap<Project, ProjectShortViewDto>()
                 .AfterMap((src, dest) =>
                 {
-                    dest.NumberOfNewIssues = src.Issues.Count(i => i.Status == "New");
+                    dest.ActiveIssues = src.Issues.Count(i => i.Status != "Closed");
                 });
                 cfg.CreateMap<AppUser, UserViewDto>()
                 .AfterMap((src, dest) =>

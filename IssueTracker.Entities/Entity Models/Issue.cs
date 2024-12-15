@@ -37,7 +37,7 @@ namespace IssueTracker.Entities
         public string Description { get; set; } // e.g. "When I click the 'Add to Cart' button, nothing happens."
 
         [StringLength(20)]
-        public string Status { get; set; } // e.g. "Open", "In Progress", "Resolved"
+        public string Status { get; set; } // e.g. "New", "In Progress", "Closed"
 
         [Range(1, 3)]
         public int Priority { get; set; } // 1 = "Low", 2 = "Medium", 3 = "High"

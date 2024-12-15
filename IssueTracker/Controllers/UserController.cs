@@ -47,7 +47,7 @@ namespace IssueTracker.Endpoint.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<UserViewDto> GetUsers()
         {
             return userManager.Users.Select(t =>
