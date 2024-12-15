@@ -8,8 +8,7 @@ namespace IssueTracker.Entities.Dtos.Issue
 {
     public class IssueViewDto
     {
-        public string Id { get; set; } = ""; 
-        public string Type { get; set; } = "";
+        public string Id { get; set; } = "";
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
         public int Priority { get; set; }

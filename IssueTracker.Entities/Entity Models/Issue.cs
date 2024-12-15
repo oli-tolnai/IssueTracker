@@ -7,7 +7,7 @@ namespace IssueTracker.Entities
 {
     public class Issue : IIdEntity
     {
-        public Issue(string projectId, string title, string description, string status, int priority, string type)
+        public Issue(string projectId, string title, string description, string status, int priority)
         {
             Id = Guid.NewGuid().ToString();
             ProjectId = projectId;
@@ -15,9 +15,6 @@ namespace IssueTracker.Entities
             Description = description;
             Status = status;
             Priority = priority;
-            Type = type;
-            //CreatedDate = createdDate;
-            //ResolvedDate = resolvedDate;
         }
 
         [StringLength(50)]
@@ -41,10 +38,6 @@ namespace IssueTracker.Entities
 
         [Range(1, 3)]
         public int Priority { get; set; } // 1 = "Low", 2 = "Medium", 3 = "High"
-
-        [MinLength(3)]
-        [StringLength(20)]
-        public string Type { get; set; } // e.g. "Bug", "Feature", "Improvement", "Task"
 
         [StringLength(50)]
         public string UserId { get; set; }

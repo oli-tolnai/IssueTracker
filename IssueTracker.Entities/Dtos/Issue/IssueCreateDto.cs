@@ -13,10 +13,6 @@ namespace IssueTracker.Entities.Dtos.Issue
     {
         public required string ProjectId { get; set; } = "";
 
-        [MinLength(3)]
-        [MaxLength(50)]
-        public required string Type { get; set; } = "";
-
         //[MinLength(10)]
         [MaxLength(100)]
         public required string Title { get; set; } = "";
