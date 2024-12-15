@@ -1,4 +1,5 @@
 ﻿using IssueTracker.Entities.Dtos.User;
+using IssueTracker.Logic.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace IssueTracker.Endpoint.Controllers
     {
         UserManager<IdentityUser> userManager;
         RoleManager<IdentityRole> roleManager;
+        DtoProvider dtoProvider;
 
-        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, DtoProvider dtoProvider)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.dtoProvider = dtoProvider;
         }
 
         [HttpGet("grantadmin/{userid}")]
@@ -42,6 +45,14 @@ namespace IssueTracker.Endpoint.Controllers
             await userManager.RemoveFromRoleAsync(user, "Admin");
         }
 
+        [HttpGet]
+        //[Authorize(Roles = "Admin")]
+        public IEnumerable<UserViewDto> GetUsers()
+        {
+            return userManager.Users.Select(t =>
+                dtoProvider.Mapper.Map<UserViewDto>(t)
+            );
+        }
 
         [HttpPost("register")]
         public async Task Register(UserInputDto dto)

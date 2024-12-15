@@ -2,6 +2,7 @@
 using IssueTracker.Entities;
 using IssueTracker.Entities.Dtos.Issue;
 using IssueTracker.Entities.Dtos.Project;
+using IssueTracker.Entities.Dtos.User;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,16 @@ namespace IssueTracker.Logic.Helpers
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Project, ProjectShortViewDto>()
-                .AfterMap((src, dest)=>
+                .AfterMap((src, dest) =>
                 {
                     dest.NumberOfNewIssues = src.Issues.Count(i => i.Status == "New");
                 });
+                cfg.CreateMap<IdentityUser, UserViewDto>()
+                .AfterMap((src, dest) =>
+                {
+                    dest.IsAdmin = userManager.IsInRoleAsync(src, "Admin").Result;
+                });
+
                 cfg.CreateMap<Project, ProjectViewDto>();
                 cfg.CreateMap<ProjectCreateUpdateDto, Project>();
                 cfg.CreateMap<IssueCreateDto, Issue>();
