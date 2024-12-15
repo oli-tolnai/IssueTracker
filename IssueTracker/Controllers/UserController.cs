@@ -1,4 +1,5 @@
 ﻿using IssueTracker.Entities.Dtos.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -19,6 +20,26 @@ namespace IssueTracker.Endpoint.Controllers
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+        }
+
+        [HttpGet("grantadmin/{userid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task GrantAdmin(string userid)
+        {
+            var user = await userManager.FindByIdAsync(userid);
+            if (user == null)
+                throw new ArgumentException("User not found");
+            await userManager.AddToRoleAsync(user, "Admin");
+        }
+
+        [HttpGet("revokeadmin/{userid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task RevokeAdmin(string userid)
+        {
+            var user = await userManager.FindByIdAsync(userid);
+            if (user == null)
+                throw new ArgumentException("User not found");
+            await userManager.RemoveFromRoleAsync(user, "Admin");
         }
 
 
